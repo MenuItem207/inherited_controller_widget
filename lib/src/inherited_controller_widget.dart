@@ -26,12 +26,11 @@ class InheritedControllerWidget extends InheritedWidget {
   /// returns the relevant controller stored in [InheritedController]
   static T? getController<T extends InheritedSubController>(
     BuildContext context,
-    dynamic key,
   ) {
     final InheritedControllerWidget? inheritedWidget =
         context.dependOnInheritedWidgetOfExactType<InheritedControllerWidget>();
     if (inheritedWidget != null) {
-      return inheritedWidget.controller.subControllers[key] as T;
+      return inheritedWidget.controller.subControllersMap[T] as T;
     }
     return null;
   }
