@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:inherited_controller_widget/src/inherited_controller.dart';
 import 'package:inherited_controller_widget/src/inherited_sub_controller.dart';
 
-/// use this directly in MaterialApp(), access the controller by calling
+/// wrap this directly around MaterialApp(), access the controller by calling
 class InheritedControllerWidget extends InheritedWidget {
   const InheritedControllerWidget({
     super.key,
