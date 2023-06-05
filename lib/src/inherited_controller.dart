@@ -19,5 +19,5 @@ class InheritedController {
   final List<InheritedSubController> subControllersList;
 
   /// maps the [Type] of [InheritedSubController] to the [InheritedSubController] instance
-  late Map<dynamic, InheritedSubController> subControllersMap;
+  final Map<dynamic, InheritedSubController> subControllersMap = {};
 }
