@@ -24,7 +24,7 @@ class InheritedControllerWidget extends InheritedWidget {
   }
 
   /// returns the relevant controller stored in [InheritedController]
-  static T? getController<T extends InheritedSubController>(
+  static T? getControllerMaybe<T extends InheritedSubController>(
     BuildContext context,
   ) {
     final InheritedControllerWidget? inheritedWidget =
@@ -33,6 +33,16 @@ class InheritedControllerWidget extends InheritedWidget {
       return inheritedWidget.controller.subControllersMap[T] as T;
     }
     return null;
+  }
+
+  /// returns the relevant controller stored in [InheritedController]
+  static T getController<T extends InheritedSubController>(
+    BuildContext context,
+  ) {
+    final InheritedControllerWidget? inheritedWidget =
+        context.dependOnInheritedWidgetOfExactType<InheritedControllerWidget>();
+    assert(inheritedWidget != null, 'No InheritedControllerWidget found');
+    return inheritedWidget!.controller.subControllersMap[T] as T;
   }
 
   @override
