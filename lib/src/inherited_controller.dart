@@ -8,16 +8,19 @@ class InheritedController {
 
   /// call this function in main()
   Future init() async {
-    for (InheritedSubController subController in subControllersList) {
-      await subController.init();
+    for (dynamic subController in subControllersList) {
+      // call init if is sub controller
+      if (subController is InheritedSubController) {
+        await subController.init();
+      }
       subControllersMap[subController.runtimeType] =
           subController; // fill up map
     }
   }
 
   /// a Map of controllers to store your inherited controllers in
-  final List<InheritedSubController> subControllersList;
+  final List subControllersList;
 
-  /// maps the [Type] of [InheritedSubController] to the [InheritedSubController] instance
-  final Map<dynamic, InheritedSubController> subControllersMap = {};
+  /// maps the [Type] to the class
+  final Map subControllersMap = {};
 }

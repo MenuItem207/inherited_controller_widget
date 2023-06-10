@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:inherited_controller_widget/src/inherited_controller.dart';
-import 'package:inherited_controller_widget/src/inherited_sub_controller.dart';
 
 /// wrap this directly around MaterialApp(), access the controller by calling
 class InheritedControllerWidget extends InheritedWidget {
@@ -24,7 +23,7 @@ class InheritedControllerWidget extends InheritedWidget {
   }
 
   /// returns the relevant controller stored in [InheritedController]
-  static T? getControllerMaybe<T extends InheritedSubController>(
+  static T? getControllerMaybe<T>(
     BuildContext context,
   ) {
     final InheritedControllerWidget? inheritedWidget =
@@ -36,7 +35,7 @@ class InheritedControllerWidget extends InheritedWidget {
   }
 
   /// returns the relevant controller stored in [InheritedController]
-  static T getController<T extends InheritedSubController>(
+  static T getController<T>(
     BuildContext context,
   ) {
     final InheritedControllerWidget? inheritedWidget =
