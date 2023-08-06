@@ -23,4 +23,7 @@ class InheritedController {
 
   /// maps the [Type] to the class
   final Map subControllersMap = {};
+
+  /// set to true to notify
+  bool shouldNotify = false;
 }
