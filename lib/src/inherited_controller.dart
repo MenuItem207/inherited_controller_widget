@@ -1,9 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:inherited_controller_widget/src/inherited_sub_controller.dart';
+
+const Map<String, ValueNotifier> defaultNotifiersMap = {};
 
 /// controller that handles [InheritedControllerWidget]
 class InheritedController {
   InheritedController({
     required this.subControllersList,
+    this.valueNotifiersMap = defaultNotifiersMap,
   });
 
   /// call this function in main()
@@ -24,6 +28,6 @@ class InheritedController {
   /// maps the [Type] to the class
   final Map subControllersMap = {};
 
-  /// set to true to notify
-  bool shouldNotify = false;
+  /// maps a string (key) to its respective value notifier
+  final Map<String, ValueNotifier> valueNotifiersMap;
 }
