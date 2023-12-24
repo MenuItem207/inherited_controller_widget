@@ -45,25 +45,21 @@ class InheritedControllerWidget extends InheritedWidget {
   }
 
   /// replaces a controller
-  static void replaceController(
-    BuildContext context,
-    dynamic newController, {
-    /// provide this if you want to notify specific children
-    String? updateKey,
-  }) {
+  static void replaceController(BuildContext context, dynamic newController) {
     final InheritedControllerWidget? inheritedWidget =
         context.dependOnInheritedWidgetOfExactType<InheritedControllerWidget>();
     inheritedWidget!.controller.subControllersMap[newController.runtimeType] =
         newController;
-
-    if (updateKey != null) {
-      inheritedWidget.controller.valueNotifiersMap[updateKey]!
-          .notifyListeners();
-    }
+    inheritedWidget.controller.shouldNotify = true;
   }
 
   @override
   bool updateShouldNotify(InheritedControllerWidget oldWidget) {
+    if (controller.shouldNotify) {
+      controller.shouldNotify = false;
+      return true;
+    }
+
     return false;
   }
 }
