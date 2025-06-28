@@ -26,4 +26,9 @@ class InheritedController {
 
   /// set to true to notify
   bool shouldNotify = false;
+
+  /// returns the relevant controller
+  T getController<T>() {
+    return subControllersMap[T] as T;
+  }
 }
