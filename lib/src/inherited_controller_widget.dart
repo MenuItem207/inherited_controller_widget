@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:inherited_controller_widget/src/inherited_controller.dart';
 
+/// usage:
+/// [RandomSubController randomSubController = getController<RandomSubController>();]
+/// reduces the boilerplate needed [InheritedControllerWidget.getController<RandomSubController>()]
+T getController<T>(BuildContext context) {
+  return InheritedControllerWidget.getController<T>(context);
+}
+
 /// wrap this directly around MaterialApp(), access the controller by calling
 class InheritedControllerWidget extends InheritedWidget {
   const InheritedControllerWidget({
