@@ -60,6 +60,15 @@ class InheritedControllerWidget extends InheritedWidget {
     inheritedWidget.controller.shouldNotify = true;
   }
 
+  /// can be called even after initial initialisation, handle your own init()
+  static void addSubController<T>(BuildContext context, T newSubController) {
+    final InheritedControllerWidget? inheritedWidget =
+        context.dependOnInheritedWidgetOfExactType<InheritedControllerWidget>();
+
+    inheritedWidget!.controller.subControllersMap[T] = newSubController;
+    inheritedWidget.controller.shouldNotify = true;
+  }
+
   @override
   bool updateShouldNotify(InheritedControllerWidget oldWidget) {
     if (controller.shouldNotify) {
